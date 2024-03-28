@@ -2,10 +2,10 @@
 
 ## Задачи:
   - [ ] Сделать авторизацию:
-      - [ ] Подключить FirebaseAuth
-      - [ ] Подключить Cloud Firestore для хранения информации о юзере
-      - [ ] Прописать слой Data (**AuthRepositoryImpl**, **UserEntity**, **UserMapper**, **UserProvider**)
-      - [ ] Прописать слой Domain (**AuthRepository**, **UserModel**, **AuthUseCases**)
+      - [x] Подключить FirebaseAuth
+      - [x] Подключить Cloud Firestore для хранения информации о юзере
+      - [x] Прописать слой Data (**AuthRepositoryImpl**, **UserEntity**, **UserMapper**, **UserProvider**)
+      - [x] Прописать слой Domain (**AuthRepository**, **UserModel**, **AuthUseCases**)
   - [ ] Прописать основной функционал приложения:
       - [ ] Подключить Hive для хранения информации локально
       - [ ] Прописать Data слой (**TaskProvider**, **HiveProvider**, **TaskRepositoryImpl**, **TaskEntity**, **TaskMapper**)
