@@ -1,16 +1,24 @@
 # tasks_organizer
 
-A new Flutter project.
-
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## Задачи:
+  - [ ] Сделать авторизацию:
+      - [ ] Подключить FirebaseAuth
+      - [ ] Подключить Cloud Firestore для хранения информации о юзере
+      - [ ] Прописать слой Data (**AuthRepositoryImpl**, **UserEntity**, **UserMapper**, **UserProvider**)
+      - [ ] Прописать слой Domain (**AuthRepository**, **UserModel**, **AuthUseCases**)
+  - [ ] Прописать основной функционал приложения:
+      - [ ] Подключить Hive для хранения информации локально
+      - [ ] Прописать Data слой (**TaskProvider**, **HiveProvider**, **TaskRepositoryImpl**, **TaskEntity**, **TaskMapper**)
+      - [ ] Прописать Domain слой (**TaskRepository**, **TaskModel**, **TaskUseCases**)
+      - [ ] Реализовать возможности:
+          - [ ] Создание таски с **Названием**, **Описанием** и **сроком выполения**
+          - [ ] **Фильтрация** и **Сортировка** тасок
+          - [ ] Отмечать задачи как выполненые
+          - [ ] Удаление задач
+          - [ ] Получать уведомление о скором приближении срока выполнения задачи
+  - [ ] UI:
+      - [ ] Реализовать экран аутентификации
+      - [ ] Реализовать экран тасок
+      - [ ] Реализовать экран создания тасок
+  - [ ] Написать тесты
+  - [ ] Документация
