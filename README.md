@@ -29,12 +29,12 @@ https://github.com/flutterVlad/tasks_organizer/assets/137285738/45c8f4e3-73b8-48
 
 
 ## Задачи:
-  - ✅: Подключить авторизацию:
+  - ✅ Подключить авторизацию:
       - ✅ Подключить FirebaseAuth
       - ✅ Подключить Cloud Firestore для хранения информации о пользователе
       - ✅ Прописать слой Data (**AuthRepositoryImpl**, **UserEntity**, **UserMapper**, **UserProvider**)
       - ✅ Прописать слой Domain (**AuthRepository**, **UserModel**, **AuthUseCases**)
-  - ✖️: Прописать основной функционал приложения:
+  - ✖️ Прописать основной функционал приложения:
       - ✅ Подключить Hive для хранения информации локально
       - ✅ Прописать Data слой (**TaskProvider**, **HiveProvider**, **TaskRepositoryImpl**, **TaskEntity**, **TaskMapper**)
       - ✅ Прописать Domain слой (**TaskRepository**, **TaskModel**, **TaskUseCases**)
