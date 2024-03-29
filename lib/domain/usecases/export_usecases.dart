@@ -1,4 +1,14 @@
+export 'usecases.dart';
 export 'auth_usecases/sign_up_usecase.dart';
 export 'auth_usecases/sign_in_usecase.dart';
 export 'auth_usecases/sign_out_usecase.dart';
 export 'auth_usecases/get_user_from_storage_usecase.dart';
+export 'task_usecases/local/add_task_local_usecase.dart';
+export 'task_usecases/local/delete_task_local_usecase.dart';
+export 'task_usecases/local/update_task_local_usecase.dart';
+export 'task_usecases/local/get_all_tasks_local_usecase.dart';
+export 'task_usecases/remote/add_task_remote_usecase.dart';
+export 'task_usecases/remote/delete_task_remote_usecase.dart';
+export 'task_usecases/remote/update_task_remote_usecase.dart';
+export 'task_usecases/remote/get_all_tasks_remote_usecase.dart';
+export 'task_usecases/remote/sync_tasks_usecase.dart';

@@ -27,4 +27,24 @@ class UserEntity {
       'userName': userName,
     };
   }
+
+  bool isEmpty() => this == const UserEntity.empty();
+
+  @override
+  bool operator ==(Object other) {
+    return other is UserEntity &&
+        uid == other.uid &&
+        userName == other.userName &&
+        email == other.email;
+  }
+
+  @override
+  int get hashCode {
+    return Object.hash(
+      runtimeType,
+      uid,
+      userName,
+      email,
+    );
+  }
 }
