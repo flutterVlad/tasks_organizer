@@ -1,7 +1,9 @@
 import '/data/entity/task/task_entity.dart';
 import '/domain/models/task/task_model.dart';
 
+/// Converter for [TaskEntity] and [TaskModel] objects.
 class TaskMapper {
+  /// Convert [TaskEntity] to [TaskModel].
   static TaskModel toModel(TaskEntity entity) {
     return TaskModel(
       id: entity.id,
@@ -14,6 +16,7 @@ class TaskMapper {
     );
   }
 
+  /// Convert [TaskModel] to [TaskEntity].
   static TaskEntity toEntity(TaskModel model) {
     return TaskEntity(
       id: model.id,

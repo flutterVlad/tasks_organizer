@@ -1,10 +1,26 @@
+/// Model of the task.
 class TaskModel {
+  /// Id of the task.
   final String id;
+
+  /// Name of the task.
   final String taskName;
+
+  /// Description of the task.
   final String description;
+
+  /// Start time of the task.
   final DateTime startTime;
-  final DateTime lastUpdate;
+
+  /// End time of the task.
   final DateTime endTime;
+
+  /// Last update time of the task.
+  ///
+  /// Used to determine, which [TaskModel] is newer.
+  final DateTime lastUpdate;
+
+  /// Is the task completed.
   final bool isCompleted;
 
   const TaskModel({
@@ -17,6 +33,7 @@ class TaskModel {
     required this.isCompleted,
   });
 
+  /// Returns new [TaskModel] with updated fields.
   TaskModel copyWith({
     String? id,
     String? taskName,

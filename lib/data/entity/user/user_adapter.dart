@@ -2,6 +2,7 @@ import 'package:hive_flutter/hive_flutter.dart';
 import '/core/hive_adapters_id/adapters_id.dart';
 import 'user_entity.dart';
 
+/// Hive adapter for [UserEntity].
 class UserAdapter extends TypeAdapter<UserEntity> {
   @override
   int get typeId => AdaptersId.user;

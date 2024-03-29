@@ -5,8 +5,12 @@ import '/data/providers/hive_provider.dart';
 import '/domain/models/task/task_model.dart';
 import '/domain/repositories/task_repository.dart';
 
+/// Implementaion of the [TaskRepository].
 class TaskRepositoryImpl implements TaskRepository {
+  /// Instance of the [FirebaseProvider].
   final FirestoreProvider _firestoreProvider;
+
+  /// Instance of the [HiveProvider].
   final HiveProvider _hiveProvider;
 
   TaskRepositoryImpl({

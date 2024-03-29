@@ -3,13 +3,16 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import '/data/entity/task/task_entity.dart';
 import '/data/entity/user/user_entity.dart';
 
+/// Provider for [FirebaseFirestore].
 class FirestoreProvider {
+  /// Instance of the [FirebaseFirestore].
   final FirebaseFirestore _firebaseFirestore;
 
   FirestoreProvider({
     required FirebaseFirestore firebaseFirestore,
   }) : _firebaseFirestore = firebaseFirestore;
 
+  /// Saves the user via [userEntity] in [FirebaseFirestore].
   Future<void> saveUser({required UserEntity userEntity}) async {
     final DocumentReference<Map<String, dynamic>> userData =
         _firebaseFirestore.collection('users').doc(userEntity.uid);
@@ -21,12 +24,14 @@ class FirestoreProvider {
     }
   }
 
+  /// Return a [UserEntity] from the [FirebaseFirestore].
   Future<UserEntity> getUser({required String uid}) async {
     final DocumentSnapshot<Map<String, dynamic>> snapshot =
         await _firebaseFirestore.collection('users').doc(uid).get();
     return UserEntity.fromJson(snapshot.data() ?? {});
   }
 
+  /// Updates the [TaskEntity]s via [UserEntity.uid] and list of [TaskEntity].
   Future<void> updateTasks({
     required String uid,
     required List<TaskEntity> tasks,
@@ -47,6 +52,7 @@ class FirestoreProvider {
     }
   }
 
+  /// Returns the list of [TaskEntity] via [UserEntity.uid].
   Future<List<TaskEntity>> getAllTasks({required String uid}) async {
     final QuerySnapshot<Map<String, dynamic>> listOfTasks =
         await _firebaseFirestore
@@ -62,6 +68,7 @@ class FirestoreProvider {
     }).toList();
   }
 
+  /// Adds the [TaskEntity] to [FirebaseFirestore].
   Future<void> addTask({
     required TaskEntity taskEntity,
     required String uid,
@@ -75,6 +82,7 @@ class FirestoreProvider {
     await taskRef.set(taskEntity.copyWith(id: taskRef.id).toMap());
   }
 
+  /// Updates the [TaskEntity] in [FirebaseFirestore].
   Future<void> updateTask({
     required String uid,
     required TaskEntity taskEntity,
@@ -88,6 +96,7 @@ class FirestoreProvider {
     await taskData.update(taskEntity.toMap());
   }
 
+  /// Deletes the [TaskEntity] from [FirebaseFirestore].
   Future<void> deleteTask({
     required String uid,
     required String taskId,

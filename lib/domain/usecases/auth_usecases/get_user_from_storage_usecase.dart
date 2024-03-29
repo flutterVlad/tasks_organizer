@@ -1,6 +1,6 @@
 import '../usecases.dart';
-import '../../repositories/auth_repository.dart';
-import '../../models/user/user_model.dart';
+import '/domain/repositories/auth_repository.dart';
+import '/domain/models/user/user_model.dart';
 
 class GetUserFromStorageUseCase implements FutureUseCase<NoParams, UserModel> {
   final AuthRepository _authRepository;

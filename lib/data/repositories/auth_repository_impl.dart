@@ -5,8 +5,12 @@ import '../mappers/user_mapper.dart';
 import '../providers/auth_provider.dart';
 import '../providers/hive_provider.dart';
 
+/// Implementation of the [AuthRepository].
 class AuthRepositoryImpl implements AuthRepository {
+  /// Instance of the [AuthProvider].
   final AuthProvider _authProvider;
+
+  /// Instance of the [HiveProvider].
   final HiveProvider _hiveProvider;
 
   AuthRepositoryImpl({

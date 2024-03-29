@@ -4,9 +4,15 @@ import '../entity/user/user_entity.dart';
 import 'firestore_provider.dart';
 import 'hive_provider.dart';
 
+/// Provider for authentication.
 class AuthProvider {
+  /// Instance of the [FirebaseAuth].
   final FirebaseAuth _firebaseAuth;
+
+  /// Instance of the [FirestoreProvider].
   final FirestoreProvider _firestoreProvider;
+
+  /// Instance of the [HiveProvider].
   final HiveProvider _hiveProvider;
 
   AuthProvider({
@@ -17,6 +23,7 @@ class AuthProvider {
         _firestoreProvider = firestoreProvider,
         _hiveProvider = hiveProvider;
 
+  /// Signs up the user with [email] and [password].
   Future<UserEntity> signUpWithEmailAndPassword({
     required String userName,
     required String email,
@@ -39,6 +46,7 @@ class AuthProvider {
     return userEntity;
   }
 
+  /// Signs in the user with [email] and [password].
   Future<UserEntity> signInWithEmailAndPassword({
     required String email,
     required String password,
@@ -56,6 +64,7 @@ class AuthProvider {
     return userEntity;
   }
 
+  /// Signs out the user.
   Future<void> signOut() async {
     await _hiveProvider.deleteUser();
     await _firebaseAuth.signOut();

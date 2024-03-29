@@ -3,6 +3,7 @@ import 'package:hive_flutter/hive_flutter.dart';
 import '/core/hive_adapters_id/adapters_id.dart';
 import '/data/entity/task/task_entity.dart';
 
+/// Hive adapter for [TaskEntity].
 class TaskAdapter extends TypeAdapter<TaskEntity> {
   @override
   final int typeId = AdaptersId.task;

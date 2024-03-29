@@ -1,6 +1,12 @@
+/// Model of the user.
 class UserModel {
+  /// User identifier.
   final String uid;
+
+  /// User email.
   final String email;
+
+  /// User name.
   final String userName;
 
   const UserModel({
@@ -9,11 +15,13 @@ class UserModel {
     required this.userName,
   });
 
+  /// Returns empty [UserModel].
   const UserModel.empty()
       : uid = '',
         email = '',
         userName = '';
 
+  /// Converts the [UserModel] to [Map].
   Map<String, String> toMap() {
     return {
       'uid': uid,
@@ -22,6 +30,7 @@ class UserModel {
     };
   }
 
+  /// Checks if the user is empty.
   bool isEmpty() => this == const UserModel.empty();
 
   @override

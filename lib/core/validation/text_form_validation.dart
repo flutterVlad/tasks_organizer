@@ -1,4 +1,6 @@
+/// Validations for the forms.
 class TextFormValidation {
+  /// Validates the form via [field].
   static String? Function(String?)? validate({FormFieldType? field}) {
     return (String? value) {
       if (value == null || value.isEmpty) {
@@ -14,4 +16,5 @@ class TextFormValidation {
   }
 }
 
+/// Types of validation field.
 enum FormFieldType { email, password, name }

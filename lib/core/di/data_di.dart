@@ -8,13 +8,21 @@ import '/data/data.dart';
 import '/navigation/app_router/app_router.dart';
 import '../firebase_options.dart';
 
+/// Instance of [GetIt] for [DataDI].
 final GetIt appLocator = GetIt.instance;
+
+/// Instance of [DataDI].
 final DataDI dataDI = DataDI();
 
+/// Global service locator for business logic.
 class DataDI {
+  /// Instance of [FirebaseFirestore].
   late final FirebaseFirestore _firebaseFirestore;
+
+  /// Instance of [FirebaseAuth].
   late final FirebaseAuth _firebaseAuth;
 
+  /// Initializes main app's dependencies.
   Future<void> initDependencies() async {
     await _initFirebase();
     await _initHive();
@@ -25,30 +33,38 @@ class DataDI {
     _initTasks();
   }
 
+  /// Initializes [Firebase].
   Future<void> _initFirebase() async {
     await Firebase.initializeApp(
       options: DefaultFirebaseOptions.currentPlatform,
     );
   }
 
+  /// Initializes [Hive] and Hive adapters.
   Future<void> _initHive() async {
     await Hive.initFlutter();
     Hive.registerAdapter(TaskAdapter());
     Hive.registerAdapter(UserAdapter());
   }
 
+  /// Setup [FirebaseFirestore] instance.
   FirebaseFirestore _initFirestore() => FirebaseFirestore.instance;
 
+  /// Setup [FirebaseAuth] instance.
   FirebaseAuth _initFirebaseAuth() => FirebaseAuth.instance;
 
+  /// Returns [_firebaseFirestore];
   FirebaseFirestore get firebaseFirestore => _firebaseFirestore;
 
+  /// Returns [_firebaseAuth];
   FirebaseAuth get firebaseAuth => _firebaseAuth;
 
+  /// Initializes [AppRouter] instance.
   void _initNavigation() {
     appLocator.registerSingleton(AppRouter());
   }
 
+  /// Initializes everything related to authentication.
   void _initAuth() {
     appLocator.registerLazySingleton<AuthRepository>(
       () => AuthRepositoryImpl(
@@ -90,6 +106,7 @@ class DataDI {
     );
   }
 
+  /// Initializes everything related to tasks.
   void _initTasks() {
     appLocator.registerLazySingleton<TaskRepository>(
       () => TaskRepositoryImpl(

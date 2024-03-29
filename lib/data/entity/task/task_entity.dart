@@ -1,10 +1,26 @@
+/// Entity of task.
 class TaskEntity {
+  /// Id of the task.
   final String id;
+
+  /// Name of the task.
   final String taskName;
+
+  /// Description of the task.
   final String description;
+
+  /// Start time of the task.
   final DateTime startTime;
+
+  /// End time of the task.
   final DateTime endTime;
+
+  /// Last update time of the task.
+  ///
+  /// Used to determine, which [TaskEntity] is newer.
   final DateTime lastUpdate;
+
+  /// Is the task completed.
   final bool isCompleted;
 
   const TaskEntity({
@@ -17,6 +33,7 @@ class TaskEntity {
     required this.isCompleted,
   });
 
+  /// Converts `DocumentReference` to the [TaskEntity].
   factory TaskEntity.fromJson(Map<String, dynamic> json) {
     return TaskEntity(
       id: json['id'] ?? '',
@@ -29,6 +46,7 @@ class TaskEntity {
     );
   }
 
+  /// Returns new [TaskEntity] with updated fields.
   TaskEntity copyWith({
     String? id,
     String? taskName,
@@ -49,6 +67,7 @@ class TaskEntity {
     );
   }
 
+  /// Converts the [TaskEntity] to the [Map].
   Map<String, dynamic> toMap() {
     return {
       'id': id,
