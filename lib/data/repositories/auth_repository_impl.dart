@@ -50,12 +50,12 @@ class AuthRepositoryImpl implements AuthRepository {
   @override
   Future<void> signOut() async {
     await _authProvider.signOut();
-    await _hiveProvider.deleteUser();
   }
 
   @override
   Future<UserModel> getUserFromStorage() async {
     final UserEntity userEntity = await _hiveProvider.getUser();
+
     return UserMapper.toModel(userEntity);
   }
 }

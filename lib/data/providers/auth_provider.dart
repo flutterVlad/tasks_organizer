@@ -49,14 +49,15 @@ class AuthProvider {
       password: password,
     );
 
-    final UserEntity userEntity =
-        await _firestoreProvider.getUser(uid: credential.user?.uid ?? '');
+    final UserEntity userEntity = await _firestoreProvider.getUser(
+      uid: credential.user?.uid ?? '',
+    );
 
     return userEntity;
   }
 
   Future<void> signOut() async {
-    await _firebaseAuth.signOut();
     await _hiveProvider.deleteUser();
+    await _firebaseAuth.signOut();
   }
 }

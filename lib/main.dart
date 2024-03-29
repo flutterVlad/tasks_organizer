@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '/domain/usecases/export_usecases.dart';
+import '/features/auth/bloc/auth_bloc.dart';
+import '/features/home/bloc/home_bloc.dart';
 import '/core/di/data_di.dart';
-import '/features/home/home_screen.dart';
+import 'navigation/app_router/app_router.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -14,16 +18,44 @@ void main() async {
 class TasksOrganizer extends StatelessWidget {
   const TasksOrganizer({super.key});
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Tasks Organizer',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider<HomeBloc>(
+          create: (BuildContext context) => HomeBloc(
+            getAllTasksUseCase: appLocator.get<GetAllTasksUseCase>(),
+            getAllTasksLocalUseCase: appLocator.get<GetAllTasksLocalUseCase>(),
+            getUserFromStorageUseCase:
+                appLocator.get<GetUserFromStorageUseCase>(),
+            addTaskUseCase: appLocator.get<AddTaskUseCase>(),
+            addTaskLocalUseCase: appLocator.get<AddTaskLocalUseCase>(),
+            updateTaskUseCase: appLocator.get<UpdateTaskUseCase>(),
+            updateTaskLocalUseCase: appLocator.get<UpdateTaskLocalUseCase>(),
+            deleteTaskUseCase: appLocator.get<DeleteTaskUseCase>(),
+            deleteTaskLocalUseCase: appLocator.get<DeleteTaskLocalUseCase>(),
+            syncTasksUseCase: appLocator.get<SyncTasksUseCase>(),
+            router: appLocator.get<AppRouter>(),
+          ),
+        ),
+        BlocProvider<AuthBloc>(
+          create: (BuildContext context) => AuthBloc(
+            signInUseCase: appLocator.get<SignInUseCase>(),
+            signUpUseCase: appLocator.get<SignUpUseCase>(),
+            getUserFromStorageUseCase:
+                appLocator.get<GetUserFromStorageUseCase>(),
+            router: appLocator.get<AppRouter>(),
+          ),
+        ),
+      ],
+      child: MaterialApp.router(
+        title: 'Tasks Organizer',
+        theme: ThemeData(
+          colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+          useMaterial3: true,
+        ),
+        routerConfig: appLocator.get<AppRouter>().config(),
       ),
-      home: const HomeScreen(),
     );
   }
 }
